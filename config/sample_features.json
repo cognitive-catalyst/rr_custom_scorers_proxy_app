@@ -1,0 +1,18 @@
+{
+  "scorers":[
+    {
+      "init_args":{
+        "name":"DocQueryIntentScorer",
+        "short_name":"qd1",
+        "description":"Score based on Document/Query alignment",
+        "service_url": "https://gateway.watsonplatform.net/natural-language-classifier/api",
+        "service_username": "c46a618f-e9ed-4cd4-b893-081147a5a65a",
+        "service_password": "FvNenGCFHTYd",
+        "classifier_id":"98C19Ex4-nlc-445"
+      },
+      "type":"query_document",
+      "module":"nlc_intent_scorer",
+      "class":"QuestionDocumentIntentAlignmentScorer"
+    }
+  ]
+}
