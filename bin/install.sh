@@ -33,7 +33,7 @@ pip install $RR_SCORERS_WHEEL
 echo "[unix] Installing requirements from requirements.txt..."
 pip install -r requirements.txt
 echo "[unix] Installing spacy..."
-pip install spacy
+pip install --upgrade spacy
 python -m spacy.en.download all
 python bin/validate_dependencies.py
 echo "[unix] Dependencies installed successfully!"

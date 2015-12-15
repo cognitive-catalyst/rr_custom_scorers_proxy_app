@@ -1,6 +1,6 @@
 Flask
 argparse
 requests
-futures
+Futures
 CherryPy
 configparser
