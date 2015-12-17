@@ -7,7 +7,7 @@
 # description: Install dependencies to run
 
 
-configure_python () {
+python_configured () {
     # Does python exist and is it of the proper version?
     if [ ! -x "$(which python)" ]; then
         echo "[unix] python is not installed. Please install python"
@@ -56,10 +56,11 @@ set -e
 LIB_DIRECTORY=lib
 RR_SCORERS_WHEEL=$LIB_DIRECTORY/rr_scorers-1.0-py2-none-any.whl
 file_exists $RR_SCORERS_WHEEL
-echo "[unix] Installing wheel=$RR_SCORERS_WHEEL..."
-pip install $RR_SCORERS_WHEEL
+python_configured
 echo "[unix] Installing requirements from requirements.txt..."
 pip install -r requirements.txt
+echo "[unix] Installing wheel=$RR_SCORERS_WHEEL..."
+pip install $RR_SCORERS_WHEEL
 echo "[unix] Installing spacy..."
 pip install --upgrade spacy
 python -m spacy.en.download all
