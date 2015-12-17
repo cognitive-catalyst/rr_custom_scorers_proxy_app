@@ -65,4 +65,5 @@ file_exists $FEATURE_CONFIG_FILE
 echo "[unix] Running server ..."
 python server.py --host=0.0.0.0 --port=9216 --feature-json-file=$FEATURE_CONFIG_FILE \
     --cluster-id=$SOLR_CLUSTER_ID --collection-name=$SOLR_COLLECTION_NAME --answer-directory=$ANSWER_DIRECTORY \
-    --service-url=$RETRIEVE_AND_RANK_BASE_URL --service-username=$RETRIEVE_AND_RANK_USERNAME --service-password=$RETRIEVE_AND_RANK_PASSWORD
+    --service-url=$RETRIEVE_AND_RANK_BASE_URL --service-username=$RETRIEVE_AND_RANK_USERNAME --service-password=$RETRIEVE_AND_RANK_PASSWORD \
+    --debug

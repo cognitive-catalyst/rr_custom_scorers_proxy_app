@@ -242,7 +242,7 @@ class FcSelect(object):
             headers={'Accept':'application/json'}, \
             files={'answer_data': open(file_path, 'rb')})
         if rerank_resp.ok:
-            #return rerank_resp.json()
+            print('Response is ok')
             if 'answers' not in rerank_resp.json():
                 raise ValueError('No answers contained in response=%r' % rerank_resp.json())
             else:
@@ -360,7 +360,7 @@ def fcselect():
         return Response(json.dumps(resp), status=200, mimetype='application/json')
     except HTTPError, e:
         app.logger.error('Exception : %r' % e)
-        obj = {'message': e.message, 'response': e.response}
+        obj = {'message': e.message, 'response': json.loads(e.response.content)}
         return Response(json.dumps(obj), status=e.response.status_code, mimetype='application/json')
     except Exception, e:
         app.logger.error('Exception : %r' % e)
