@@ -3,4 +3,4 @@ build/
 target/
 *.pyc
 answers/*.csv
-logs/*.log
+logs/*.log*

@@ -78,18 +78,16 @@ class FcSelect(object):
             return self.rerank(**kwargs)
 
         # Parameters
-        q = kwargs.get('q')[0]
-        search_rows = kwargs.get('rows', self.default_search_rows_)
-        search_rows = search_rows if type(search_rows) is not list else search_rows[0]
-        gt = kwargs.get('gt')[0]
+        q           = self.get_query_value(kwargs, 'q')
+        search_rows = self.get_query_value(kwargs, 'rows', self.default_search_rows_)
+        gt          = self.get_query_value(kwargs, 'gt')
+        fl          = self.get_query_value(kwargs, 'fl', self.default_fl_)
 
         # Determine the parameters to send to the classifier
-        fl = kwargs.get('fl', self.default_fl_)
-        fl = fl if type(fl) is not list else fl[0]
         required_fields = self.scorers_.get_required_fields()
         required_fields.append('featureVector')
         required_fields.extend([x.strip() for x in fl.split(',')])
-        non_return_fields = set(required_fields) - {'featureVector'} - set([x.split() for x in fl.split(',')])
+        non_return_fields = set(required_fields) - {'featureVector'} - set([x.strip() for x in fl.split(',')])
         required_fl = ','.join(list(set(required_fields)))
 
         # Call fcselect
